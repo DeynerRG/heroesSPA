@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+.card__div{
+    transition: filter .3s ease;
+    filter: brightness(.8);    
+}
+.card__div:hover{
+    cursor: pointer;
+   
+    filter: brightness(1);    
+}
