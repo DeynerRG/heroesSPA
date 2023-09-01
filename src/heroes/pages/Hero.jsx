@@ -17,7 +17,7 @@ function Hero() {
   }
   const { characters, alter_ego, first_appearance, publisher, superhero } = heroe 
   
-  const urlImage = `/assets/img/${id}.jpg`
+  const urlImage = `/img/${id}.jpg`
 
   const onNavigateBack = ()=>{
     navigate(-1)
