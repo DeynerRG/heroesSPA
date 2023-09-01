@@ -10,6 +10,7 @@ import Login from './auth/pages/Login'
 import Search from './heroes/pages/Search'
 import Hero from './heroes/pages/Hero'
 
+
 const router = createBrowserRouter([
   
   {

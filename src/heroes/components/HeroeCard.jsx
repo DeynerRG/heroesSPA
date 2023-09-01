@@ -5,7 +5,7 @@ function HeroeCard({ heroe }) {
 
     const { id, superhero, publisher, alter_ego, first_appearance, characters  } = heroe;
 
-    const urlImage = `/assets/img/${ id }.jpg`
+    const urlImage = `/img/${ id }.jpg`
 
 
     return (
