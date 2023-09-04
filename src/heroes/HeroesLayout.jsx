@@ -1,7 +1,22 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
 import Navbar from "../ui/components/Navbar"
+import { useAuthContext } from "../auth/hooks/useAuthContext"
+import { Navigate } from "react-router-dom";
 
 function HeroesLayout() {
+  
+  const { authState } = useAuthContext();
+
+  const { logged } = authState;
+
+  const { pathname, search } = useLocation();
+  const lastPath = pathname + search;
+  localStorage.setItem( 'lastPath', lastPath );
+
+
+  // si no esta logeado retorna la ruta del login
+  if(!logged) return <Navigate to={'/login'}/>
+  
   return (
     <>
       <Navbar />

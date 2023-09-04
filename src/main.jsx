@@ -9,7 +9,7 @@ import Dc from './heroes/pages/Dc'
 import Login from './auth/pages/Login'
 import Search from './heroes/pages/Search'
 import Hero from './heroes/pages/Hero'
-
+import { AuthProvider } from './auth/context/AuthContext'
 
 const router = createBrowserRouter([
   
@@ -37,6 +37,10 @@ const router = createBrowserRouter([
         path: 'hero/:id',
         element: <Hero/>
       },
+      {
+        path: '/*',
+        element: <Navigate to={'/marvel'}/>
+      }
 
     ]
   },
@@ -55,6 +59,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={ router }/>
+    <AuthProvider>
+      <RouterProvider router={ router }/>
+    </AuthProvider>
   </React.StrictMode>,
 )

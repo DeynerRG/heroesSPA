@@ -1,8 +1,14 @@
-import { Outlet } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
+import { useAuthContext } from "./hooks/useAuthContext"
 
 function AuthLayout() {
 
+  const { authState } = useAuthContext();
+  const { logged } = authState
   
+  const lastPath = localStorage.getItem('lastPath') || '/';
+  if(logged) return <Navigate to={lastPath}/>
+
   return (
     <>
        <div className="absolute left-0 right-0">

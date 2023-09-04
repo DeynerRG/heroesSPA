@@ -1,12 +1,18 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, json, useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../auth/hooks/useAuthContext';
+
 
 function Navbar() {
 
   const navigate = useNavigate();
+  const { authState, logout } = useAuthContext();
 
+  
 
   const onLogout = ()=>{
-    navigate( '/login', { replace: true } )
+    
+    logout();
+    navigate( '/login', { replace: true } );
   };
 
 
@@ -41,12 +47,19 @@ function Navbar() {
           
         </div>
 
-        <button
-          onClick={ onLogout }
-          className='font-semibold md:text-lg text-gray-500 hover:text-gray-200 px-2 py-1  rounded-md'
-        >
-          Logout
-        </button>
+        <div className='flex items-center gap-2'>
+          <p className='text-xl font-semibold capitalize text-emerald-500'>
+            {
+              authState.user?.name
+            }
+          </p>
+          <button
+            onClick={ onLogout }
+            className='font-semibold md:text-lg text-gray-500 hover:text-gray-200 px-2 py-1  rounded-md'
+          >
+            Logout
+          </button>
+        </div>
   
       </nav>
 
